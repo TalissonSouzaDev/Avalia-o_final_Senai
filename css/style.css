@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container-login{
+    display: flex;
+    justify-content: space-around;
+
+}
+.login-left{
+    background-color: #88bfc1;
+    width: 100%;
+    height: 100vh;
+}
+
+.login-right{
+    background-color: #cfe5e6;
+    width: 100%;
+    height: 100vh;
+    padding: 8% 10%
+}
+
+.container-login-left
+{
+    background-color: #fff;
+    width: 600px;
+    padding:5em 15px;
+    height: 40vh auto;
+    border-radius: 15px;
+    box-shadow: 5px 10px 15px black;
+}
+
+.container
+{
+   margin-top: 5em;
+}
+
+.form-group{
+    margin-bottom: 15px;
+}
+
+.link
+{
+    text-align: center;
+}
