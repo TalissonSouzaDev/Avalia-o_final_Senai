@@ -1,11 +1,11 @@
 <?php
 ob_start();
 @session_start();
-include('Message.php');
+require_once('Message.php');
 class UserModel implements IUser
 {
 
-    public $conn, $message;
+    protected $conn, $message;
     public function __construct(PDO $conn)
     {
         $this->conn = $conn;

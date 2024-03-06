@@ -13,6 +13,7 @@
 
    <form action="process.php" method="post">
    <input type="hidden" name="type" value="agenda_update">
+   <input type="hidden" name="id" value="<?= $editagenda['id']?>">
        <!-- Modal body -->
        <div class="modal-body">
 

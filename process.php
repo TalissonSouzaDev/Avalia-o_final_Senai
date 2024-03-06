@@ -1,8 +1,8 @@
 <?php
 include("./connect.php");
-//include('./models/UserModel.php');
+include('./models/UserModel.php');
 include('./models/AgendaModel.php');
-//$user = new UserModel($conn);
+$user = new UserModel($conn);
 $agenda = new AgendaModel($conn);
 $type = filter_input(INPUT_POST, "type");
 
@@ -40,7 +40,15 @@ switch ($type) {
             'telefone'=>filter_input(INPUT_POST, "telefone"),
             'site'=>filter_input(INPUT_POST, "site"),
             'description'=>filter_input(INPUT_POST, "description"),
+            'id'=>filter_input(INPUT_POST, "id"),
             
          ];
+         $agenda->update($data);
         break;
+
+        case "agenda_destroy":
+            $id = filter_input(INPUT_POST, "id");
+            $agenda->delete($id);
+            
+            break;
 }

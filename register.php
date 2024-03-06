@@ -1,7 +1,14 @@
-<?php include("template/header.php");  ?>
+<?php include("template/header.php"); 
+
+
+if($userdata != [])
+{
+   header("location:index.php");
+
+}?>
 <div class="container-login">
     <div class="login-left">
-    <h1>Ola</h1>
+    <img src="./img/Agenda_telefonica.png" alt="" srcset="">
     </div>
 
     <div class="login-right">

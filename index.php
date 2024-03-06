@@ -10,7 +10,7 @@
  }
  ?>
 <div class="container">
-  <h2>Agenda Telefonica <i class="fa-solid fa-tty"></i></h2>
+  <h2>Agenda Telefônica <i class="fa-solid fa-tty"></i></h2>
   <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal"><i class="fa-solid fa-plus"></i></a>          
   <table class="table table-striped">
     <thead>

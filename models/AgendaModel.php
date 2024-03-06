@@ -1,14 +1,14 @@
 <?php
 ob_start();
 @session_start();
-//include('Message.php');
+require_once('Message.php');
 class AgendaModel implements IAgenda
 {
-    public $conn, $message;
+    protected  $conn, $message;
     public function __construct(PDO $conn)
     {
         $this->conn = $conn;
-       // $this->message =  new Messagem();
+        $this->message = new Message();
     }
 
 
@@ -48,19 +48,52 @@ class AgendaModel implements IAgenda
         $stmt->bindParam(":description",$data['description']);
         $stmt->bindParam(":user_id",$data['user_id']);
         $stmt->execute();
-        //$this->message->SetMessage("Cadastro com sucesso","success");
+        $this->message->SetMessage("criado com sucesso","success");
         }
         catch(Exception $e)
         {
-            //$this->message->SetMessage("error","danger");
+            $this->message->SetMessage("error","danger");
         }
         
     }
     public function update(array $data){
+
+        try{
+            $sql = "UPDATE agendas SET name= :name,email= :email, telefone= :telefone, site= :site,description= :description WHERE id= :id ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":name",$data['name']);
+            $stmt->bindParam(":email",$data['email']);
+            $stmt->bindParam(":telefone",$data['telefone']);
+            $stmt->bindParam(":site",$data['site']);
+            $stmt->bindParam(":description",$data['description']);
+            $stmt->bindParam(":id",$data['id']);
+            $stmt->execute();
+            $this->message->SetMessage("atualizado com sucesso","success");
+        }
+        catch(Exception $e)
+        {
+            $this->message->SetMessage("error","danger");
+        }
         
     }
-    public function delete(array $data){
+    public function delete(int $id)
+    {
+
+        try
+        { 
+            $agendaid = $this->GetId($id);
+            $stmt = $this->conn->prepare("DELETE FROM agendas WHERE id = :id ");
+            $stmt->bindParam(":id",$agendaid['id']);
+            $stmt->execute();
+            $this->message->SetMessage("deletado com sucesso","success");
+        }
+       
+        catch(Exception $e)
+        {
+            $this->message->SetMessage("error","danger");
+        }
         
+      
     }
 }
 
@@ -73,7 +106,7 @@ interface IAgenda
     public function GetId(int $id);
     public function create(array $data);
     public function update(array $data);
-    public function delete(array $data);
+    public function delete(int $id);
 
 }
  
